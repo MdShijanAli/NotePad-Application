@@ -4,7 +4,7 @@ import Sidebar from "../components/Sidebar";
 const Main = () => {
   return (
     <div>
-      <div className="grid grid-cols-4 gap-5">
+      <div className="grid grid-cols-4">
         <div>
         <Sidebar />
       </div>

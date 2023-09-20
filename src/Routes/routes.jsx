@@ -9,7 +9,7 @@ import Login from "../Login/ResetPassword/Login";
 import Home from "../Pages/Home/Home";
 import ThankYouPage from "../Pages/ThankYouPage/ThankYouPage";
 import AddNote from "../Pages/AddNote/AddNote";
-import Dashboard from './../Pages/Dashboard/Dashboard';
+import AllNotes from '../Pages/Dashboard/AllNotes';
 
 export const routes = createBrowserRouter([
     {
@@ -25,8 +25,8 @@ export const routes = createBrowserRouter([
                 element: <AddNote />
             },
             {
-                path: '/dashboard',
-                element: <Dashboard />
+                path: '/all-notes',
+                element: <AllNotes />
             },
             /* {
                 path: '/services',
