@@ -5,6 +5,7 @@ import { AuthContext } from './../../utilities/AuthProvider/AuthProvider';
 const AddNote = () => {
 
   const { user } = useContext(AuthContext);
+  console.log(user)
   const handleSubmit =(e) => {
     e.preventDefault()
     const form = e.target;

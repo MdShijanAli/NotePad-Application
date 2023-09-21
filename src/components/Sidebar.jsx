@@ -1,16 +1,16 @@
 import { NavLink } from "react-router-dom";
 import { BiSolidDashboard, BiSolidNotepad } from 'react-icons/bi';
-import img from "../image/my-photo.jpg"
 import { useContext } from "react";
 import { AuthContext } from "../utilities/AuthProvider/AuthProvider";
 import toast from "react-hot-toast";
+import { FaUserCircle } from "react-icons/fa";
 
 
 
 const Sidebar = () => {
 
 
-  const { logOut } = useContext(AuthContext);
+  const { logOut,user } = useContext(AuthContext);
      
     
 
@@ -30,14 +30,14 @@ const Sidebar = () => {
     <div className="bg-[#14263A] h-screen">
       <div>
         <div className="bg-[#204162] py-10">
-                  <div className="avatar  block">
-                        <div className="w-24 mx-auto rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                          <img className="" src={img} />
+                 <div className="avatar w-full">
+                            {user?.photoURL ? <div className="w-24 h-24 mx-auto rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                                <img src={user?.photoURL} alt='user' />
+                            </div> : <FaUserCircle className='w-24 h-24 mx-auto rounded-full ring ring-primary ring-offset-base-100 ring-offset-2' />}
                         </div>
-                   </div>
                    <div className="text-center text-white">
-                              <h2 className="text-2xl pt-5 font-semibold">Md Shijan ALi</h2>
-                              <p className="text-xl">shijan135@gmail.com</p>
+            <h2 className="text-2xl pt-5 font-semibold">{user? user?.displayName : "No Name" }</h2>
+            <p className="text-xl">{ user? user?.email : "no-email@gmail.com"}</p>
                    </div>
 
         </div>
