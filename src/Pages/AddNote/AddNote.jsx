@@ -4,7 +4,7 @@ const AddNote = () => {
     <div>
       {/* Open the modal using document.getElementById('ID').showModal() method */}
       
-      <div className='fixed right-0 bottom-0'>
+      <div className='min-h-screen flex items-center justify-center'>
             <label htmlFor="add_note_modal">
                                   <svg xmlns="http://www.w3.org/2000/svg" className='mx-auto' width="100" height="100" viewBox="0 0 93 93" fill="none">
                                               <g filter="url(#filter0_d_46_1632)">
@@ -43,10 +43,10 @@ const AddNote = () => {
                                </div>
             
                                 <div className="mb-4">
-                                    <label className="block dark:text-white text-gray-700 font-bold mb-2" htmlFor="title">
-                                        Title
+                                    <label className="block dark:text-white text-gray-700 font-bold mb-2" htmlFor="description">
+                                        Description
                                     </label>
-                                    <textarea type="text" placeholder="Enter Title" required name="title" id="title" className="input input-bordered input-success w-full"/>
+                                    <textarea name="description" id="description" className="textarea textarea-success w-full textarea-lg" placeholder="Note"></textarea>
                                 </div>
 
 
