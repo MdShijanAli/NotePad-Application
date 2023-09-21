@@ -1,5 +1,49 @@
+import { useContext } from "react";
+import toast from "react-hot-toast";
+import { AuthContext } from './../../utilities/AuthProvider/AuthProvider';
 
 const AddNote = () => {
+
+  const { user } = useContext(AuthContext);
+  const handleSubmit =(e) => {
+    e.preventDefault()
+    const form = e.target;
+    const title = form.title.value;
+    const description = form.description.value;
+
+    
+
+    const NoteDetails = {
+      title,
+      description,
+      email: user?.email
+    }
+    
+
+    fetch('http://localhost:5000/note', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(NoteDetails)
+        })
+            .then(res => res.json())
+            .then(data => {
+
+                if (data.acknowledged) {
+                  toast.success('Successfully Added Your Note');
+                  window.location.href = "/all-notes";
+                }
+                else {
+                    toast.error(data.message)
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
+
+
+}
   return (
     <div>
       {/* Open the modal using document.getElementById('ID').showModal() method */}
@@ -32,7 +76,7 @@ const AddNote = () => {
             <input type="checkbox" id="add_note_modal" className="modal-toggle" />
       <div className="modal">
                  <div className="modal-box">
-                 <form >
+                 <form onSubmit={handleSubmit}>
                                 <h3 className='text-center text-3xl font-semibold mb-10'>Add Note</h3>
                            
                                 <div className="mb-4">
