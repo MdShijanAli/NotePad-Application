@@ -5,11 +5,11 @@ import ResetPass from "../Login/ResetPassword/ResetPass";
 import ErrorPage from "../components/ErrorPage";
 import Register from "../Login/ResetPassword/Register";
 import Login from "../Login/ResetPassword/Login";
-
-import Home from "../Pages/Home/Home";
 import ThankYouPage from "../Pages/ThankYouPage/ThankYouPage";
 import AddNote from "../Pages/AddNote/AddNote";
 import AllNotes from '../Pages/Dashboard/AllNotes';
+import PriveteRoute from "./PrivetRoute/PrivetRoute";
+import ProtectRoute from "./ProtectRoute/ProtectRoute";
 
 export const routes = createBrowserRouter([
     {
@@ -18,16 +18,13 @@ export const routes = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Home />
+                element: <PriveteRoute><AllNotes /></PriveteRoute>
             },
             {
                 path: '/add-note',
-                element: <AddNote />
+                element: <PriveteRoute><AddNote /></PriveteRoute>
             },
-            {
-                path: '/all-notes',
-                element: <AllNotes />
-            },
+            
             /* {
                 path: '/services',
                 element: <Services></Services>,
@@ -43,11 +40,11 @@ export const routes = createBrowserRouter([
             
             {
                 path: '/login',
-                element: <Login />
+                element: <ProtectRoute><Login /></ProtectRoute>
             },
             {
                 path: '/register',
-                element: <Register />
+                element: <ProtectRoute><Register /></ProtectRoute>
             },
             {
                 path: '*',
@@ -64,7 +61,7 @@ export const routes = createBrowserRouter([
            
             {
                 path: '/reset-password',
-                element: <ResetPass />
+                element: <ProtectRoute><ResetPass /></ProtectRoute>
             },
            
            /*  {

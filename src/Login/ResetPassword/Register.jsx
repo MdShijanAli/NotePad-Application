@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 import logo from '../../image/loginImage.jpg'
 import img from '../../image/my-photo.jpg'
 import useTitle from '../../hoocks/useTitle';
@@ -11,13 +11,14 @@ import LoadingSpinner from '../../components/LoadingSpinner';
 const Register = () => {
     useTitle('Register')
     const [wrongPass, setWrongPass] = useState('');
-    const location = useLocation();
-    const from = location.state?.from?.pathname || '/';
+
+    // const navigate = useNavigate();
     const [error, setError] = useState('');
     const [showpass, setShowPass] = useState(false);
-    const [rolee, setRolee] = useState('Buyer');
-    const navigate = useNavigate();
-    const { createUser, loading, setLoading, signInGoogle, verifyEmail, updateUserProfile } = useContext(AuthContext);
+    const [showConfirmPass, setShowConfirmPass] = useState(false);
+    
+    
+    const { createUser, loading, setLoading, signInGoogle, updateUserProfile } = useContext(AuthContext);
 
 
 
@@ -61,53 +62,15 @@ const Register = () => {
             .then(imageData => {
 
                 if (imageData.success) {
-
-                    const userInfo = {
-                        displayName: name,
-                        photoURL: imageData.data.url,
-                        email,
-                        role: rolee
-
-
-                    }
-                    console.log(userInfo)
-                    // save doctor information to the database
-
-                    fetch('https://assignment-12-server-neon.vercel.app/users', {
-                        method: 'POST',
-                        headers: {
-                            'content-type': 'application/json',
-                            // authorization: `bearer ${localStorage.getItem('accessToken')}`
-                        },
-                        body: JSON.stringify(userInfo)
-                    })
-                        .then(res => res.json())
-                        .then(result => {
-                            if (result.acknowledged) {
-                                toast.success(`${name} is Added Successfully`);
-                                navigate('/')
-                            }
-                            console.log(result)
-                        })
-                }
-
-
-
-
-
-                createUser(email, password)
+                    createUser(email, password)
                     .then(() => {
-                        
-                        setError('');
                         updateUserProfile(name, imageData.data.url)
-                            .then(
-                                verifyEmail()
-                                    .then(() => {
-                                        toast.success('Please Check your email for verification');
-                                        navigate(from, { replace: true })
-
-                                    })
-                            )
+                            .then(() => {
+                                setLoading(true)
+                                toast.success('Your Profile Has Benn Updated')
+                                window.location.href = "/";
+                                // navigate('/')
+                            })
                             .catch(error => setError(error.message))
                     })
                     .catch(error => {
@@ -115,13 +78,18 @@ const Register = () => {
                         setError(error.message);
                         setLoading(false)
                     })
+                }
+                        
 
-            })
+                })
+    
+    
+    
             .catch(err => {
                 toast.error(err.message)
             })
 
-
+    
         // console.log(name, check, email, image, password, confirm)
 
 
@@ -135,9 +103,9 @@ const Register = () => {
         signInGoogle()
             .then(result => {
                 const user = result.user;
-                
+                window.location.href = "/";
                 console.log('New User From Google', user);
-                navigate(from, { replace: true })
+                
             })
             .catch(error => {
                 console.error('Google User SIgn In error', error);
@@ -149,7 +117,7 @@ const Register = () => {
     return (
         <div >
             <div className="bg-indigo-50">
-                <form onSubmit={handleSubmit} className="xl:px-20 md:px-10 sm:px-6 px-4 md:py-12 py-9 2xl:mx-auto 2xl:container md:flex items-center justify-center">
+                <form onSubmit={handleSubmit} className="xl:px-20 md:px-10 sm:px-6 px-4 md:py-12 py-9 4xl:mx-auto 4xl:container md:flex items-center justify-center">
                     <div className=" md:hidden sm:mb-8 mb-6">
                         <svg width={191} height={34} viewBox="0 0 191 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -254,8 +222,8 @@ const Register = () => {
                                 Confirm Password{" "}
                             </label>
                             <div className="relative flex items-center justify-center">
-                                <input name='confirm' id="myInputt" type={showpass ? "text" : "password"} className="bg-gray-200 border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2" required />
-                                <div onClick={() => setShowPass(!showpass)} className="absolute right-0 mt-2 mr-3 cursor-pointer">
+                                <input name='confirm' id="myInputt" type={showConfirmPass ? "text" : "password"} className="bg-gray-200 border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2" required />
+                                <div onClick={() => setShowConfirmPass(!showConfirmPass)} className="absolute right-0 mt-2 mr-3 cursor-pointer">
                                     <div id="show">
                                         <svg width={16} height={16} viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -283,18 +251,7 @@ const Register = () => {
                             {wrongPass}
                         </div>
 
-                        <div className='mt-6 w-full'>
-                            <label htmlFor="role" className="text-sm font-medium leading-none text-gray-800">
-                                {" "}
-                                Select Your Role{" "}
-                            </label>
-                            <select
-                             onChange={(e)=>setRolee(e.target.value)} 
-                            name='role' id='role' className="select select-success w-full my-2" required>
-                                <option value="Buyer">Buyer</option>
-                                <option value="Saller">Saller</option>
-                            </select>
-                        </div>
+                        
 
                         <div className="mt-8">
                             <button className="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 text-sm font-semibold leading-none text-white focus:outline-none bg-indigo-700 border rounded hover:bg-indigo-600 py-4 w-full">
@@ -304,9 +261,9 @@ const Register = () => {
                             </button>
                         </div>
                     </div>
-                    <div className="xl:w-1/3 md:w-1/2 lg:ml-16 ml-8 md:mt-0 mt-6">
+                    <div className=" ml-8 md:mt-0 mt-6">
                         <div className="pl-8 md:block hidden">
-                            <img src={logo} alt="" />
+                            <img className='w-full' src={logo} alt="" />
                         </div>
                         <div className="flex items-start mt-8">
                             <div>
@@ -321,7 +278,7 @@ const Register = () => {
                                     />
                                 </svg>
                             </div>
-                            <p className="sm:text-2xl text-xl leading-7 text-gray-600 pl-2.5">Generating random paragraphs can be an excellent way for writers to get their creative flow going at the beginning of the day. The writer has no idea what topic the random paragraph will be about when it appears</p>
+                          
                         </div>
                         <div className="flex items-center pl-8 mt-10">
                             <div className="w-20 h-20  rounded-xl">

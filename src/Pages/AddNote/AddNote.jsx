@@ -1,11 +1,14 @@
 import { useContext } from "react";
 import toast from "react-hot-toast";
 import { AuthContext } from './../../utilities/AuthProvider/AuthProvider';
+import useTitle from "../../hoocks/useTitle";
+import { useNavigate } from "react-router-dom";
 
 const AddNote = () => {
-
+  useTitle("Add Note")
   const { user } = useContext(AuthContext);
   console.log(user)
+  const navigate = useNavigate();
   const handleSubmit =(e) => {
     e.preventDefault()
     const form = e.target;
@@ -33,7 +36,8 @@ const AddNote = () => {
 
                 if (data.acknowledged) {
                   toast.success('Successfully Added Your Note');
-                  window.location.href = "/all-notes";
+                  // window.location.href = "/";
+                  navigate('/')
                 }
                 else {
                     toast.error(data.message)

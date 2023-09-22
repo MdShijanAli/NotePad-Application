@@ -1,8 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../utilities/AuthProvider/AuthProvider";
 import { Link } from "react-router-dom";
+import useTitle from "../../hoocks/useTitle";
 
 const AllNotes = () => {
+  useTitle("All Notes")
   const { user } = useContext(AuthContext);
   const [notes, setNotes] = useState([]);
 

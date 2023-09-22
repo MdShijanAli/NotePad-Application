@@ -48,7 +48,7 @@ const Sidebar = () => {
 
 
                       <li className='text-xl '>
-                      <NavLink className='text-white hover:text-[#00b22d]' to='/all-notes'>
+                      <NavLink className='text-white hover:text-[#00b22d]' to='/'>
                                 <BiSolidDashboard ></BiSolidDashboard>
                                 <span className='ml-2'> All Notes</span>   
                           </NavLink>

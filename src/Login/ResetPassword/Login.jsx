@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 import useTitle from '../../hoocks/useTitle';
 import { AuthContext } from '../../utilities/AuthProvider/AuthProvider';
 import LoadingSpinner from '../../components/LoadingSpinner';
-
+import logo from '../../image/loginImage.jpg'
 
 const Login = () => {
     useTitle('Login')
@@ -135,7 +135,7 @@ const Login = () => {
 
                 <div className="flex items-center justify-center px-4 py-10 sm:py-16 lg:py-24 bg-gray-50 sm:px-6 lg:px-8">
                     <div>
-                        <img className="w-full mx-auto" src="https://images.pexels.com/photos/1462630/pexels-photo-1462630.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />
+                        <img className="w-full mx-auto" src={logo} alt="" />
 
                         <div className="w-full max-w-md mx-auto xl:max-w-xl">
                             <h3 className="text-2xl mt-5 font-bold text-center text-black">Make Your Own Life</h3>
