@@ -27,9 +27,11 @@ const AllNotes = () => {
         <div className="card-body">
             <h2 className="card-title">{ note?.title}</h2>
             <p className=" break-words">{ note?.description.slice(0,100)}...</p>
-                 <div className="card-actions justify-end">
-                   <button className="btn btn-primary">Read More</button>
+            <Link to={`/note/${note?._id}`}>
+            <div className="card-actions justify-end">
+                   <button  className="btn btn-primary">Read More</button>
                  </div>
+            </Link>
          </div>
        </div>)
         }

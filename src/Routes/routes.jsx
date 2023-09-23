@@ -10,6 +10,7 @@ import AddNote from "../Pages/AddNote/AddNote";
 import AllNotes from '../Pages/Dashboard/AllNotes';
 import PriveteRoute from "./PrivetRoute/PrivetRoute";
 import ProtectRoute from "./ProtectRoute/ProtectRoute";
+import SingleNote from "../Pages/SingleNote/SingleNote";
 
 export const routes = createBrowserRouter([
     {
@@ -24,6 +25,11 @@ export const routes = createBrowserRouter([
                 path: '/add-note',
                 element: <PriveteRoute><AddNote /></PriveteRoute>
             },
+            {
+                path: '/note/:id',
+                element: <SingleNote />,
+                loader: ({ params }) => fetch(`http://localhost:5000/note/${params.id}`)
+            },
             
             /* {
                 path: '/services',
@@ -31,11 +37,7 @@ export const routes = createBrowserRouter([
                 loader: () => fetch('https://assignment-11-server-phi.vercel.app/services')
 
             },
-            {
-                path: '/services/:id',
-                element: <ServiceDetails></ServiceDetails>,
-                loader: ({ params }) => fetch(`https://assignment-11-server-phi.vercel.app/services/${params.id}`)
-            }, */
+             */
 
             
             {
