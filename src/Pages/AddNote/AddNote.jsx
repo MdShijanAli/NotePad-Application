@@ -102,7 +102,7 @@ const AddNote = () => {
 
 
                                 <div className="modal-action">
-                                    <button type='submit' htmlFor="fund-modal" className="btn bg-[#00b22d] text-white hover:bg-[#00b22d]">Add Note</button>
+                                    <button type='submit' htmlFor="note-modal" className="btn bg-[#00b22d] text-white hover:bg-[#00b22d]">Add Note</button>
                                 </div>
                             </form>
                   </div>

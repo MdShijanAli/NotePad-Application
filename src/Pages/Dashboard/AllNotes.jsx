@@ -26,7 +26,7 @@ const AllNotes = () => {
         notes.map(note=> <div key={note?._id} className="col-span-1 card bg-base-100 shadow-xl">
         <div className="card-body">
             <h2 className="card-title">{ note?.title}</h2>
-            <p className=" break-words">{ note?.description.slice(0,100)}...</p>
+            <p className=" break-words">{ note?.description?.slice(0,100)}...</p>
             <Link to={`/note/${note?._id}`}>
             <div className="card-actions justify-end">
                    <button  className="btn btn-primary">Read More</button>
