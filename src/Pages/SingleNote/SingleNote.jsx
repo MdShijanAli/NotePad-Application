@@ -14,7 +14,7 @@ const SingleNote = () => {
   
 
   const handleDelete = (_id) => {
-    const url = `http://localhost:5000/note/${_id}`;
+    const url = `https://note-pad-server.vercel.app/note/${_id}`;
     console.log(url)
     fetch(url, {
       method: "DELETE",

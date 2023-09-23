@@ -28,7 +28,7 @@ export const routes = createBrowserRouter([
             {
                 path: '/note/:id',
                 element: <SingleNote />,
-                loader: ({ params }) => fetch(`http://localhost:5000/note/${params.id}`)
+                loader: ({ params }) => fetch(`https://note-pad-server.vercel.app/note/${params.id}`)
             },
             
             /* {

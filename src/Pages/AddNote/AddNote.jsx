@@ -24,7 +24,7 @@ const AddNote = () => {
     }
     
 
-    fetch('http://localhost:5000/note', {
+    fetch('https://note-pad-server.vercel.app/note', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

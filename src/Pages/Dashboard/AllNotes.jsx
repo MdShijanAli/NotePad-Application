@@ -9,7 +9,7 @@ const AllNotes = () => {
   const [notes, setNotes] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/notes')
+        fetch('https://note-pad-server.vercel.app/notes')
             .then(res => res.json())
             .then(data => {
                 const filtr = data.filter(note => note?.email == user?.email)
