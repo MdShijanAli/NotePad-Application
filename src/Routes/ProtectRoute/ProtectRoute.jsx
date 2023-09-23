@@ -1,8 +1,11 @@
+// eslint-disable-next-line no-unused-vars
+import React from 'react';
 import { useContext } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../utilities/AuthProvider/AuthProvider';
 
 
+// eslint-disable-next-line react/prop-types
 const ProtectRoute = ({ children }) => {
 
     const { user, loading } = useContext(AuthContext);

@@ -1,18 +1,20 @@
+// eslint-disable-next-line no-unused-vars
+import React from 'react';
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+
 
 // eslint-disable-next-line react/prop-types
 const EditNote = ({id, title, description}) => {
  
   
   const [note, setNote] = useState({id, title, description});
-    const navigate = useNavigate();
+   
 
     const handleUpdate = event => {
         event.preventDefault();
         console.log(note);
-        fetch(`http://localhost:5000/note/${id}`, {
+        fetch(`https://note-pad-server.vercel.app/note/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

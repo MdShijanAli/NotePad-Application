@@ -1,6 +1,7 @@
+// eslint-disable-next-line no-unused-vars
+import React from 'react';
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../layout/Main";
-
 import ResetPass from "../Login/ResetPassword/ResetPass";
 import ErrorPage from "../components/ErrorPage";
 import Register from "../Login/ResetPassword/Register";
@@ -31,15 +32,6 @@ export const routes = createBrowserRouter([
                 loader: ({ params }) => fetch(`https://note-pad-server.vercel.app/note/${params.id}`)
             },
             
-            /* {
-                path: '/services',
-                element: <Services></Services>,
-                loader: () => fetch('https://assignment-11-server-phi.vercel.app/services')
-
-            },
-             */
-
-            
             {
                 path: '/login',
                 element: <ProtectRoute><Login /></ProtectRoute>
@@ -66,19 +58,6 @@ export const routes = createBrowserRouter([
                 element: <ProtectRoute><ResetPass /></ProtectRoute>
             },
            
-           /*  {
-                path: '/add-a-service',
-                element: <PriveteRoute><AddAService></AddAService></PriveteRoute>
-            },
-            {
-                path: '/my-services',
-                element: <PriveteRoute><MyServices></MyServices></PriveteRoute>
-            },
-            {
-                path: '/update-review/:id',
-                element: <UpdateReview></UpdateReview>,
-                loader: ({ params }) => fetch(`https://assignment-11-server-phi.vercel.app/reviews/${params.id}`)
-            } */
         ]
     }
 ])

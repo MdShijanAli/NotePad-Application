@@ -1,4 +1,6 @@
-import  { useContext, useState } from 'react';
+// eslint-disable-next-line no-unused-vars
+import React from 'react';
+import { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa';
 import toast from 'react-hot-toast';
