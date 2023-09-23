@@ -21,7 +21,7 @@ const AllNotes = () => {
 
   return (
     <>
-       {notes.length? <div className="grid grid-cols-3 gap-5 m-10">
+       {notes.length? <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 m-10">
       {
         notes.map(note=> <div key={note?._id} className="col-span-1 card bg-base-100 shadow-xl">
         <div className="card-body">

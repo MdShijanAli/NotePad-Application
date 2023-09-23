@@ -27,8 +27,8 @@ const Sidebar = () => {
           })
   }
   return (
-    <div className="bg-[#14263A] h-screen">
-      <div>
+    <div className="bg-[#14263A] md:h-screen">
+      <div className="grid grid-cols-2 md:block">
         <div className="bg-[#204162] py-10">
                  <div className="avatar w-full">
                             {user?.photoURL ? <div className="w-24 h-24 mx-auto rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
@@ -41,8 +41,8 @@ const Sidebar = () => {
                    </div>
 
         </div>
-        <hr className="" />
-        <div>
+        <hr className="hidden md:block" />
+        <div className="">
         <ul className="menu p-4 lg:w-100 text-base-content  ">
 
 

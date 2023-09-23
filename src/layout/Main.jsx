@@ -8,11 +8,11 @@ const Main = () => {
   return (
     <div>
       {
-        user ? <div className="grid grid-cols-4">
+        user ? <div className="md:grid md:grid-cols-4 grid-cols-1">
         <div>
         <Sidebar />
       </div>
-        <div className="col-span-3">
+        <div className="md:col-span-3">
         <Outlet />
       </div>
         </div> :
