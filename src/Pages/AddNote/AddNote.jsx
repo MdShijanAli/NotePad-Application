@@ -82,7 +82,7 @@ const AddNote = () => {
 
             <input type="checkbox" id="add_note_modal" className="modal-toggle" />
       <div className="modal">
-                 <div className="modal-box">
+                 <div className="modal-box w-11/12 max-w-5xl">
                  <form onSubmit={handleSubmit}>
                                 <h3 className='text-center text-3xl font-semibold mb-10'>Add Note</h3>
                            
