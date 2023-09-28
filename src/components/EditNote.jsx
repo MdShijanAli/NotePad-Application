@@ -46,7 +46,7 @@ const EditNote = ({id, title, description}) => {
     <div>
       <input type="checkbox" id="edit_note_modal" className="modal-toggle" />
       <div className="modal">
-                 <div className="modal-box">
+                 <div className="modal-box w-11/12 max-w-5xl">
                  <form onSubmit={handleUpdate}>
                                 <h3 className='text-center text-3xl font-semibold mb-10'>Add Note</h3>
                            
